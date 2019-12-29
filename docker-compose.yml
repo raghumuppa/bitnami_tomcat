@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  tomcat:
+    image: bitnami/tomcat:9.0.30
+    container_name: testweb
+    environment:
+        - TOMCAT_USERNAME=admin
+        - TOMCAT_PASSWORD=password
+    volumes:
+        - 'tomcat_data:/bitnami'
+        - ./SampleWebApp.war:/app/ROOT.war
+    ports:
+        - 1234:8080
+
+volumes:
+  tomcat_data:
+    driver: local
